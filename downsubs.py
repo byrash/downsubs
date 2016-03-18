@@ -26,9 +26,11 @@ def down(dir,name) :
 			echo('Download Subtitles for %s' %fileName)
 			call(['subliminal','download','-l','en',fileName])
 			call(['syncnames','-f', dir,'-nm', name])
-			deleteUnNeededFilesIfAny(dir)
+			deleteUnNeededFilesIfAny(name)
 		else:
 			rename(existingSrt,join(dir,'english.srt'))
+			call(['syncnames','-f', dir,'-nm', name])
+			deleteUnNeededFilesIfAny(name)
 
 
 # gets the main movie file on which subtitles need to be download on

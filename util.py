@@ -7,6 +7,7 @@ from os import rename
 
 
 def getMovieFileInDir(path):
+	echo('Getting movie file in directory %s' %path)
 	files = []
 	for file in listdir(path):
 		fileName = join(path,file)
