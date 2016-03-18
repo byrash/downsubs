@@ -44,3 +44,9 @@ def deleteAllSrtFiles(dir):
 	for file in listdir(dir):
 		if fnmatch(file,'*.srt'):
 			remove(join(dir,file))
+
+def deleteUnNeededFilesIfAny(dir):
+	movieFile = getMovieFileInDir(dir)
+	for file in listdir(dir):
+		if join(dir,file) != movieFile and not fnmatch(file,'*.srt'):
+			remove(join(dir,file))

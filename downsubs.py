@@ -4,7 +4,7 @@ from fnmatch import fnmatch
 from os.path import isdir,join
 from os import rename,listdir,remove
 from constants import *
-from util import flatDirectory,getMovieFileInDir,deleteAllSrtFiles
+from util import flatDirectory,getMovieFileInDir,deleteAllSrtFiles,deleteUnNeededFilesIfAny
 from subprocess import call
 
 
@@ -26,6 +26,7 @@ def down(dir,name) :
 			echo('Download Subtitles for %s' %fileName)
 			call(['subliminal','download','-l','en',fileName])
 			call(['syncnames','-f', dir,'-nm', name])
+			deleteUnNeededFilesIfAny(dir)
 		else:
 			rename(existingSrt,join(dir,'english.srt'))
 
